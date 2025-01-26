@@ -1,11 +1,19 @@
 {
-    "name": "COMP423 Course Notes",
-    "image": "mcr.microsoft.com/devcontainers/python:latest",
-    "customizations": {
-      "vscode": {
-        "settings": {},
-        "extensions": ["ms-python.python"]
-      }
-    },
-    "postCreateCommand": "pip install -r requirements.txt"
-  }
+  "name": "COMP423 DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/python:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "ms-python.python",
+        "golang.go"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && touch main.go && go mod init hello_423"
+}
