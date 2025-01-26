@@ -116,7 +116,6 @@ This file defines the configuration for your development environment. We are goi
 - ```customizations```: this is how we add useful configurations to VSCode, such as programming language extensions
 - ```postCreateCommand```: commands we want to be run everytime the dev container is built
 
-
 ```
 {
   "name": "COMP423 DevContainer",
