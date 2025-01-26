@@ -74,7 +74,7 @@ Now, we have a local repository and a remote repository, but they are not linked
 To link your local repository to the remote repository, enter the following command in the terminal
 
 ```
-git remote add origin https://github.com/<your-username>/comp423-course-notes.git
+git remote add origin https://github.com/<your-username>/comp423-go-tutorial.git
 ```
 replacing `<your-username>` with your GitHub username.
 
@@ -112,38 +112,10 @@ This file defines the configuration for your development environment. We are goi
 
 - ```name```: a descriptive name for your dev container
 - ```image ```: the Docker image to use 
-- ```features```: additional components we want to use
 - ```customizations```: this is how we add useful configurations to VSCode, such as programming language extensions
 - ```postCreateCommand```: commands we want to be run everytime the dev container is built
 
-```
-{
-  "name": "COMP423 DevContainer",
-  "image": "mcr.microsoft.com/devcontainers/python:latest",
-  "features": {
-    "ghcr.io/devcontainers/features/go:1": {
-      "version": "latest"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "settings": {},
-      "extensions": [
-        "ms-python.python",
-        "golang.go"
-      ]
-    }
-  },
-  "postCreateCommand": "pip install -r requirements.txt && touch main.go && go mod init hello_423"
-}
-```
-
-- ```"image": "mcr.microsoft.com/devcontainers/python:latest"```: This uses the latest official Python base image from Microsoft. 
-- ```"features": { "ghcr.io/devcontainers/features/go:1": { "version": "latest" } }```: This feature adds the latest version of Go to the dev container, so you can use it alongside Python.
-- ```"postCreateCommand"```: "pip install -r requirements.txt && touch main.go && go mod init hello_423": After the container is created, this command installs any Python dependencies listed in requirements.txt, creates a main.go file for Go code, and initializes a Go module for the project.
-
-If you don't need your project to support Python, your devcontainer.json file might look like this:
-
+Paste the following into your ```devcontainer.json``` file.
 ```
 {
   "name": "COMP 423 Go Tutorial",
@@ -159,6 +131,10 @@ If you don't need your project to support Python, your devcontainer.json file mi
   "postCreateCommand": "touch main.go && go mod init hello_423"
 }
 ```
+
+- ```"image": "mcr.microsoft.com/vscode/devcontainers/go"```: This uses the official Go base image from Microsoft.
+- ```"customizations": {"vscode": {"settings": {},"extensions": ["golang.go"]}}```: Downloads the VSCode extension for Go styling.
+- ```"postCreateCommand": "pip install -r requirements.txt && touch main.go && go mod init hello_423"```: After the container is created, this command installs any Python dependencies listed in requirements.txt, creates a main.go file for Go code, and initializes a Go module for the project.
 
 After adding the necessary configurations, rebuild your dev container and you should see a file called ```main.go``` appear in your project's directory. This file is where you will write your Go code. 
 
