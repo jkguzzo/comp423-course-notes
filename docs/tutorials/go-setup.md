@@ -142,7 +142,7 @@ This file defines the configuration for your development environment. We are goi
 - ```"features": { "ghcr.io/devcontainers/features/go:1": { "version": "latest" } }```: This feature adds the latest version of Go to the dev container, so you can use it alongside Python.
 - ```"postCreateCommand"```: "pip install -r requirements.txt && touch main.go && go mod init hello_423": After the container is created, this command installs any Python dependencies listed in requirements.txt, creates a main.go file for Go code, and initializes a Go module for the project.
 
-If you didn't need your project to support Python, your devcontainer.json might look like the following:
+If you don't need your project to support Python, your devcontainer.json file might look like this:
 
 ```
 {
@@ -186,7 +186,8 @@ Now that you have your dev container set up and your main function written, you 
 go run main.go
 ```
 
-The ```run``` subcommand **compiles** and **runs** the Go program in one step. Since it doesn't create a binary file, it is most useful for on-the-fly testing. You should see ```Hello COMP423``` printed directly to your terminal from this one line of code.
+!!! note
+    The ```run``` subcommand **compiles** and **runs** the Go program in one step. Since it doesn't create a binary file, it is most useful for on-the-fly testing. You should see ```Hello COMP423``` printed directly to your terminal from this one line of code.
 
 You can also use the ```build``` subcommand to compile your program into a binary file. This step is similar to how you would use the ```gcc``` command in a C project, where ```gcc``` compiles your source code into an executable. For Go, use: 
 
@@ -194,7 +195,8 @@ You can also use the ```build``` subcommand to compile your program into a binar
 go build -o hello
 ```
 
-This command compiles your Go code into a binary executable named hello. Unlike ```go run```, the ```build``` subcommand doesn't execute your program; it only compiles it. You won't see any output from ```go build``` unless there's an error in your code.
+!!! note
+    The ```build``` command compiles your Go code into a binary executable named hello. Unlike ```go run```, the ```build``` subcommand doesn't execute your program; it only compiles it. You won't see any output from ```go build``` unless there's an error in your code.
 
 The key difference from ```go run``` is that ```go build``` creates an independent executable that you can run multiple times without needing to recompile every time. This is the same as compiling a program with gcc in a C project. ```gcc``` generates an executable that can be run independently of the source code.
 
