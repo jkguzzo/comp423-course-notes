@@ -192,4 +192,12 @@ Once the binary is built, you can run it directly:
 
 This will execute the compiled binary, and you'll see the output ```Hello COMP423``` in your terminal, just like with the ```go run``` command. However, now that you have the binary, you don't need to rerun ```go build``` unless you make changes to your source code. Simply executing ```./hello``` will run your program.
 
+All that's left is to stage, commit, and push your code! To do so, run the following code:
+
+```
+git add .
+git commit -m "Finished the Go tutorial"
+git push -u origin main
+```
+
 Congratulations! You just started a project from scratch using a programming language you were unfamiliar with! Feel free to play around with this program by changing the message that gets printed. Thanks for following along!
