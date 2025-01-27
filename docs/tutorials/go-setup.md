@@ -13,6 +13,8 @@ Welcome! In this tutorial, you will learn how to set up your own project from sc
 4. Docker installed [Install Docker](https://www.docker.com/products/docker-desktop/)
 5. A basic understanding of the command-line
 
+**You could add another step here to ensure the prereqs were met. For example, having the user run ```git --version``` or ```docker --version``` to ensure they were installed correctly could provide a saftey net for new users**
+
 ## Part 1: Project Setup
 
 ### Step 1: Creating a Local Repository
@@ -37,7 +39,7 @@ Now that you have created a directory (**mkdir**) and changed into that director
 git init
 ```
 
-The last step in creating a repository is creating a README file. A README file is the first point of documentation in a project that contains an overview about the project, including its purpose, how to use it, and any other key details someone unfamiliar with the project would need to know. 
+The last step in creating a repository is creating a README file. A README file is the first point of documentation in a project that contains an overview about the project, including its purpose, how to use it, and any other key details someone unfamiliar with the project would need to know. **Feel free to edit this file as you like as you continue coding. A good practice is to add the author (that you!), purpose, and usage for your project.**
 
 To do this, type in the following commands:
 
@@ -103,6 +105,7 @@ First, open your go-tutorial directory in VSCode. To do this, open VSCode, go to
 Next, install the **Dev Containers** extension for VSCode.
 
 Then, create a ```.devcontainer``` directory in the root of your project with the following file inside of this "hidden" configuration directory:
+**Explain what hidden directories are for some new users, and that the '.' before the name of the directory makes it a hidden one**
 
 ```
 .devcontainer/devcontainer.json
@@ -138,6 +141,14 @@ Paste the following into your ```devcontainer.json``` file.
 
 After adding the necessary configurations, rebuild your dev container and you should see a file called ```main.go``` appear in your project's directory. This file is where you will write your Go code. 
 
+**Before continuing to coding, go to the terminal inside of VSCode. Type the following command in the terminal:**
+
+```
+go version
+```
+
+**This will return the latest released version of Go, as we set up.**
+
 ### Step 2: Creating a Go Function
 
 Copy and paste the following code into ```main.go```:
@@ -152,7 +163,11 @@ func main() {
 }
 ```
 
-Save and rebuild the dev container yet again. 
+**Provide an explaination for what the code does**
+**For example**
+**- package main defines the entry point of the program**
+**- fmt.PrintLn is Go's version of a print command. Explain the difference between Print and PrintLn**
+Save and rebuild the dev container yet again.  **Explain what this does a little more as well**
 
 ### Step 3: Running the Program
 
@@ -183,3 +198,7 @@ Once the binary is built, you can run it directly:
 ```
 
 This will execute the compiled binary, and you'll see the output ```Hello COMP423``` in your terminal, just like with the ```go run``` command. However, now that you have the binary, you don't need to rerun ```go build``` unless you make changes to your source code. Simply executing ```./hello``` will run your program.
+
+**Add a conclusion paragraph of some sorts, and also encourage the user to play around with their program, changing Hello COMP423 to their name or something**
+
+**Lastly, consider adding keyboard shortcuts for users which could make the tutorial a bit easier**
