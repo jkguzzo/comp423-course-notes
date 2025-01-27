@@ -3,15 +3,18 @@
 * Primary author: [Julia Guzzo](https://github.com/jkguzzo)
 * Reviewer: [Ryan Neill](https://github.com/raneill26)
 
-Welcome! In this tutorial, you will learn how to set up your own project from scratch using the Go programming language. If you are unfamiliar with Go, that is okay; the point of this tutorial is to walk you through how to create a new project using today’s development tools, practice Git, and learn how to use technical documentation when working with an unfamiliar tool. Before starting, ensure all of the prerequisites are fulfilled.  
+Welcome! In this tutorial, you will learn how to set up your own project from scratch using the Go programming language. If you are unfamiliar with Go, that is okay; the point of this tutorial is to walk you through how to create a new project using today’s development tools and practice Git. Before starting, ensure all of the prerequisites are fulfilled.  
 
 ## Prerequisites
 
-1. A GitHub Account [Create a GitHub account](https://github.com/signup)
+1. A GitHub Account [Create a GitHub Account](https://github.com/signup)
 2. Git installed on your machine [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 3. Visual Studio Code (VSCode) [Install VSCode](https://code.visualstudio.com/)
 4. Docker installed [Install Docker](https://www.docker.com/products/docker-desktop/)
 5. A basic understanding of the command-line
+
+!!! note
+    Feel free to run ```git --version``` and ```docker --version``` to ensure these conditions are satisfied.
 
 ## Part 1: Project Setup
 
@@ -37,9 +40,9 @@ Now that you have created a directory (**mkdir**) and changed into that director
 git init
 ```
 
-The last step in creating a repository is creating a README file. A README file is the first point of documentation in a project that contains an overview about the project, including its purpose, how to use it, and any other key details someone unfamiliar with the project would need to know. 
+The last step in creating a repository is creating a README file. A README file is the first point of documentation in a project that contains an overview about the project and other key details someone unfamiliar with the project would need to know. Feel free to edit this file as you like. A good practice is to add the author (that's you!), purpose, and usage for your project.
 
-To do this, type in the following commands:
+To create a README, type in the following commands:
 
 ```
 echo "# Go Tutorial" > README.md 
@@ -47,7 +50,7 @@ git add README.md
 git commit -m “Initial commit with README”
 ```
 
-Since there is no README.md file yet in this directory, the first line will create one and will write "Go Tutorial" to this file. The next 2 lines **stage** and then **commit** this file to our local repository. 
+Since there is no README.md file yet in this directory, the first line will create one and will write "Go Tutorial" to this file. The next 2 lines **stage** and **commit** this file to our local repository. 
 
 At this point, we only have a local repository created. This means that all work done in this directory will only exist on your machine. This can be problematic, so we should create a remote repository, too.
 
@@ -94,7 +97,7 @@ Now, your local repository should be linked to your GitHub repository. To confir
 
 ## Part 2: Dev Container Configuration
 
-A dev container is a preconfigured environment that includes everything you need to work on a specific project, including the programming language, tools, libraries, and dependencies. Essentially, a dev container is like its own computer that gets rid of inconsistencies across machines. This way, anyone with the dev container can work in an identical environment without having to worry about having the same things installed and with the same versions. 
+A dev container is a preconfigured environment that includes everything you need to work on a specific project, including the programming language, tools, libraries, and dependencies. Essentially, a dev container is like its own computer that gets rid of inconsistencies across machines. This way, anyone with the dev container can work in an identical environment without having to worry about having the same software and/or versions installed. 
 
 ### Step 1: Add Development Container Configuration
 
@@ -102,11 +105,7 @@ First, open your go-tutorial directory in VSCode. To do this, open VSCode, go to
 
 Next, install the **Dev Containers** extension for VSCode.
 
-Then, create a ```.devcontainer``` directory in the root of your project with the following file inside of this "hidden" configuration directory:
-
-```
-.devcontainer/devcontainer.json
-```
+Now, we have to create a devcontainer directory that holds our devcontainer configuration. To do this, create a ```.devcontainer``` directory in the root of your project. The '.' before ```devcontainer``` makes this directory a **hidden** directory. A **hidden** directory is one that is not visible by default. Inside this directory, create a file called ```devcontainer.json```.
 
 This file defines the configuration for your development environment. We are going to specify the following:
 
@@ -136,7 +135,15 @@ Paste the following into your ```devcontainer.json``` file.
 - ```"customizations": {"vscode": {"settings": {},"extensions": ["golang.go"]}}```: Downloads the VSCode extension for Go styling.
 - ```"postCreateCommand": "pip install -r requirements.txt && touch main.go && go mod init hello_423"```: After the container is created, this command installs any Python dependencies listed in requirements.txt, creates a main.go file for Go code, and initializes a Go module for the project.
 
-After adding the necessary configurations, rebuild your dev container and you should see a file called ```main.go``` appear in your project's directory. This file is where you will write your Go code. 
+After adding the necessary configurations, rebuild your dev container using ```Click Ctrl + Shift + P``` for Windows,  ```Cmd + Shift + P``` for Mac, or go to ```View``` -> ```Command Pallette```, and type "Dev Containers: Reopen in Container."  You should see a file called ```main.go``` appear in your project's directory. This file is where you will write your Go code. 
+
+To ensure the correct version of Go is in this dev container, run the following command:
+
+```
+go version
+```
+
+This should return the latest released version of Go if everything was configured correctly.
 
 ### Step 2: Creating a Go Function
 
@@ -152,7 +159,8 @@ func main() {
 }
 ```
 
-Save and rebuild the dev container yet again. 
+!!! note
+    It is not uncommon to be asked to use a programming language that you are unfamiliar with. When this happens, it is important you know how to consult documentation. You can find the documentation for Go [here](https://go.dev/doc/). ```package main``` defines that the file belongs to the ```main``` package. In Go, the ```main package``` is special because it indicates that the file has an executable program. ```import "fmt"``` imports the ```fmt``` package, which contains functions for formatting text and printing to the consult. Finally, the ```func main() { fmt.Println("Hello COMP423) }``` defines the ```main``` function that prints our message.  
 
 ### Step 3: Running the Program
 
@@ -183,3 +191,5 @@ Once the binary is built, you can run it directly:
 ```
 
 This will execute the compiled binary, and you'll see the output ```Hello COMP423``` in your terminal, just like with the ```go run``` command. However, now that you have the binary, you don't need to rerun ```go build``` unless you make changes to your source code. Simply executing ```./hello``` will run your program.
+
+Congratulations! You just started a project from scratch using a programming language you were unfamiliar with! Feel free to play around with this program by changing the message that gets printed. Thanks for following along!
