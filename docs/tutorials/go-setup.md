@@ -133,7 +133,7 @@ Paste the following into your ```devcontainer.json``` file.
 
 - ```"image": "mcr.microsoft.com/vscode/devcontainers/go"```: This uses the official Go base image from Microsoft.
 - ```"customizations": {"vscode": {"settings": {},"extensions": ["golang.go"]}}```: Downloads the VSCode extension for Go styling.
-- ```"postCreateCommand": "touch main.go && go mod init hello_423"```: After the container is created, this command installs any Python dependencies listed in requirements.txt, creates a main.go file for Go code, and initializes a Go module for the project.
+- ```"postCreateCommand": "touch main.go && go mod init hello_423"```: After the container is created, this command creates a main.go file for Go code and initializes a Go module for the project.
 
 After adding the necessary configurations, rebuild your dev container using ```Click Ctrl + Shift + P``` for Windows,  ```Cmd + Shift + P``` for Mac, or go to ```View``` -> ```Command Pallette```, and type "Dev Containers: Reopen in Container."  You should see a file called ```main.go``` appear in your project's directory. This file is where you will write your Go code. 
 
